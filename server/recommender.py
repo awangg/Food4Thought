@@ -42,13 +42,15 @@ def text_process(mess):
     3. Returns a list of the cleaned text
     """
     # Check characters to see if they are in punctuation
-    print(mess)
-    nopunc = [char for char in mess if char not in string.punctuation]
-# Join the characters again to form the string.
-    nopunc = ''.join(nopunc)
-    
-    # Now just remove any stopwords
-    return " ".join([word for word in nopunc.split() if word.lower() not in stop])
-    
+    if(isinstance(mess, float)):
+        return " "
+    else:
+        nopunc = [char for char in mess if char not in string.punctuation]
+    # Join the characters again to form the string.
+        nopunc = ''.join(nopunc)
+        
+        # Now just remove any stopwords
+        return " ".join([word for word in nopunc.split() if word.lower() not in stop])
+
 bus_data['reviewText'] = bus_data['reviewText'].apply(text_process)
 
