@@ -20,9 +20,9 @@
                     approximate the most likely rating that the user would give to the restaurant. Finally, 
                     we used gradient descent to calculate and minimize the error in our predictions. </h4> 
                     <img src="~@/assets/error.png" alt="andy" class="img-fluid" />
-                <h4 class="intro my-5"> The recommendation system would return five restaurants, given by their
-                    name, estimated rating, and Google Places ID. We simply plugged the ID into the Google Places
-                    API to get a description, images, and the address of the recommended location. </h4>
+                <h4 class="intro my-5"> We take the top five recommendations, given by their name, estimated rating, 
+                    Google Places ID, and address. Then, we can simply plug the address into the Google Places API to 
+                    get detailed information for each location, such as its address and Google Maps listing! </h4>
             </div>
         </div>
         <div class="row mb-5">
