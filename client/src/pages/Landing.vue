@@ -40,7 +40,7 @@ export default {
 <style scoped>
 
 .img {
-    margin-top: 15%;
+    margin-top: 18%;
 }
 .title {
   font-family: 'Kumbh Sans', sans-serif;
@@ -113,7 +113,7 @@ img {
 
 .arrow {
 	border: solid black;
-	border-color: #3C3C3C;
+	border-color: #ffb6b9;
 	border-width: 0 3px 3px 0;
 	display: inline-block;
 	padding: 10px;
