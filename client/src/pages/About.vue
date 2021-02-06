@@ -36,16 +36,16 @@
                     after the pandemic has ended. We hope that our project can help alleviate financial
                     burdens for small businesses and allow more to survive through the year. </h4>
                 <div class="row justify-content-center">
-                    <div class="col">
+                    <div class="col-md-3 col-sm-6">
                         <img src="~@/assets/andy.jpg" alt="andy" class="propic img-fluid rounded-circle">
                     </div>
-                    <div class="col">
+                    <div class="col-md-3 col-sm-6">
                         <img src="~@/assets/claire_pic.png" alt="claire" class="propic img-fluid rounded-circle">
                     </div>
-                    <div class="col">
+                    <div class="col-md-3 col-sm-6">
                         <img src="~@/assets/megan_new.png" alt="megan" class="propic img-fluid rounded-circle">
                     </div>
-                    <div class="col">
+                    <div class="col-md-3 col-sm-6">
                         <img src="~@/assets/sarah.jpg" alt="sarah" class="propic img-fluid rounded-circle">
                     </div>
                 </div>
