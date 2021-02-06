@@ -20,7 +20,7 @@
             <span class="label-text">State</span>
             <span class="nav-dot"></span>
         </label>
-        <input id="input-5" type="button" value="Press To Finish" v-on:click="uploadInformation" />
+        <input id="input-5" type="button" value="Press To Finish" />
         <label for="input-5">
             <span class="label-text">All Set!</span>
             <span class="nav-dot"></span>
@@ -57,7 +57,7 @@ input {
 input {
     padding: 0.25rem 0;
     border: 0;
-    border-bottom: 1px solid #ffb101;
+    border-bottom: 1px solid #beebe9;
     outline: 0;
     background: transparent;
     color: #2a2a2a;
@@ -68,7 +68,7 @@ input {
     transition: all 0.5s cubic-bezier(0.4, 0.25, 0.8, 0.3);
 }
 input::selection {
-    background: #ffb101;
+    background: #beebe9;
 }
 
 input:focus {
@@ -96,8 +96,8 @@ input:focus + label .label-text {
     transition: all 0.3s cubic-bezier(0.1, 0.45, 0.1, 0.85) 0.4s;
 }
 input:focus + label .nav-dot:before {
-    background: #ffb101;
-    box-shadow: 0 0 0 0.15rem #111, 0 0 0.05rem 0.26rem #2a2a2a;
+    background: #ffb6b9;
+    box-shadow: 0 0 0 0.15rem #beebe9, 0 0 0.05rem 0.26rem #beebe9;
 }
 .tip {
     position: fixed;
@@ -146,7 +146,7 @@ input:focus + label .nav-dot:before {
     height: 0.375rem;
     margin-right: 0.625rem;
     position: fixed;
-    background-color: #16272f;
+    background-color: #ffb6b9;
     border: 0;
     transition: all 0.25s;
 }
@@ -155,7 +155,7 @@ input:focus + label .nav-dot:before {
     height: 0.625rem;
     margin-top: -0.125rem;
     margin-left: -0.125rem;
-    background-color: #ffb101;
+    background-color: #beebe9;
 }
 label[for="input-1"] .nav-dot {
     margin-top: -125px;
