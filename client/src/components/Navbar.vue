@@ -1,28 +1,12 @@
 <template>
-  <div class="container mt-5">
-    <b-navbar toggleable="lg" type="light" variant="faded" id="navbar">
-      
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-
-      <b-collapse id="nav-collapse" is-nav>
-        <b-navbar-nav class="ml-auto">
-          <b-nav-item class="nav-item" right>
-            <router-link class="nav-link" to="/"> Home </router-link>
-          </b-nav-item>
-          <b-nav-item class="nav-item" right>
-            <a class="nav-link" href="/onboarding"> Let's Eat! </a>
-          </b-nav-item>
-          <b-nav-item class="nav-item" right>
-            <router-link class="nav-link" to="/about"> About </router-link>
-          </b-nav-item>
-          <b-nav-item class="nav-item" right>
-            <router-link class="nav-link" to="/recs"> Recs </router-link>
-          </b-nav-item>
-
-        </b-navbar-nav>
-      </b-collapse>
-    </b-navbar>
-  </div>
+<div> 
+  <nav> 
+    <router-link class="nav-item" to="/recs">Recs</router-link>
+    <router-link class="nav-item" to="/about">About</router-link>
+    <router-link class="nav-item" to="/onboarding">Let's Eat!</router-link>
+    <router-link class="nav-item" to="/">Home</router-link>
+  </nav> 
+</div>
 </template>
 
 
@@ -37,29 +21,47 @@ export default {
 </script>
 
 <style scoped>
-#navbar {
-  background: #ffffff;
-  font-family: Avenir;
-  color: #2a2a2a;
+nav {
+	left: 0%;
+	right: 0%;
+	background-color: #fbfbfb;
+	position: fixed;
+	top: 0px;
+	display: block;
+	box-shadow: 2px 2px 5px #aaaaaa;
+	z-index: 1;
+
 }
-b-navbar{
-  background: #ffffff;
-}
+
 .nav-item {
-  margin: 0rem 1rem;
+	color: #3C3C3C;
+	float: right;
+	display: block;
+	text-align: center;
+	padding: 20px;
+	text-decoration: none;
+	font-size: 17px;
+	font-weight: 500;
+  font-family: Avenir, Helvetica, Arial, sans-serif;
 }
-.nav-link {
-  text-decoration: none;
-  color: #000;
+
+.nav-item:hover {
+	color: #3C3C3C;
+	transition: 0.5s;
 }
-.btn {
-  background: #a2dce7;
-  border-color: #a2dce7;
-  color: #2a2a2a;
+
+
+.nav-item:hover:after {
+    transform: scaleX(1);
 }
-.btn:hover {
-  background: #32afc7;
-  color: #2a2a2a;
-  border-color: #32afc7;
+
+.nav-item::after {
+    display:block;
+    content: '';
+    border-bottom: solid 3px #beebe9;  
+    transform: scaleX(0);  
+    transition: 350ms ease-in-out;
+    transform-origin: 0% 50%;
 }
+
 </style>

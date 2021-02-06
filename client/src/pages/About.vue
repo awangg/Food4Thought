@@ -42,6 +42,8 @@ body {
   font-family: 'Kumbh Sans', sans-serif;
   font-size: 80px;
   color: #ffb6b9;
+  margin-top: 7%;
+  margin-bottom: -10px;
 }
 .intro {
   font-size: 24px;

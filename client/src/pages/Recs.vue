@@ -132,7 +132,7 @@ export default {
   font-family: 'Kumbh Sans', sans-serif;
   font-weight: bold;
   font-size: 80px;
-  margin-top: 5%;
+  margin-top: 7%;
   color: #ffb6b9;
 }
 .el-col {
