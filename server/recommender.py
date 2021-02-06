@@ -22,7 +22,6 @@ nltk.download('stopwords')
 
 df = pd.read_csv('data/out.csv')
 df_business = pd.read_csv('data/places.csv')
-print(df.head())
 
 #Select only stars and text
 #replaced 'business_id', 'user_id', 'stars', 'text' with 
@@ -57,10 +56,6 @@ bus_data['reviewText'] = bus_data['reviewText'].apply(text_process)
 userid_df = bus_data[['gPlusUserId','reviewText']]
 business_df = bus_data[['gPlusPlaceId', 'reviewText']]
 
-print("aljreghakjerghaeor;hgao;erhgaeruhg;auerg")
-print(userid_df.head())
-print(business_df.head())
-print("alirhgauerhgaoerhgoauerhgouahergh")
 from sklearn.feature_extraction.text import TfidfVectorizer
 #userid vectorizer
 userid_vectorizer = TfidfVectorizer(tokenizer = WordPunctTokenizer().tokenize, max_features=400)
@@ -70,9 +65,6 @@ businessid_vectorizer = TfidfVectorizer(tokenizer = WordPunctTokenizer().tokeniz
 businessid_vectors = businessid_vectorizer.fit_transform(business_df['reviewText'])
 
 userid_rating_matrix = pd.pivot_table(bus_data, values='rating', index=['gPlusUserId'], columns=['gPlusPlaceId'])
-print("============================\n")
-print(userid_rating_matrix.head())
-print("\n==============================")
 
 # def matrix_factorization(R, P, Q, steps=25, gamma=0.001,lamda=0.02):
 #     print(R)
@@ -104,14 +96,24 @@ Q = pd.DataFrame(businessid_vectors.toarray(), index=business_df.gPlusPlaceId, c
 # print(Q.head())
 # P, Q = matrix_factorization(userid_rating_matrix, P, Q, steps=25, gamma=0.001,lamda=0.02)
 
-words = "comfort food"
+# Store P, Q and vectorizer in pickle file
+import pickle
+output = open('food4thought.pkl', 'wb')
+pickle.dump(P,output)
+pickle.dump(Q,output)
+pickle.dump(userid_vectorizer,output)
+output.close()
+
+
+
+words = "i want chinese food"
 test_df= pd.DataFrame([words], columns=['reviewText'])
 test_df['reviewText'] = test_df['reviewText'].apply(text_process)
 test_vectors = userid_vectorizer.transform(test_df['reviewText'])
 test_v_df = pd.DataFrame(test_vectors.toarray(), index=test_df.index, columns=userid_vectorizer.get_feature_names())
 
 predictItemRating=pd.DataFrame(np.dot(test_v_df.loc[0],Q.T),index=Q.index,columns=['Rating'])
-topRecommendations=pd.DataFrame.sort_values(predictItemRating,['Rating'],ascending=[0])[:7]
+topRecommendations=pd.DataFrame.sort_values(predictItemRating,['Rating'],ascending=[0])[:5]
 
 for i in topRecommendations.index:
     print(df_business[df_business['gPlusPlaceId']==i]['name'].iloc[0])
