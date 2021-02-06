@@ -3,7 +3,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet">
     <h1  class = "about-title">About Us</h1>    
     <h4 class='intro'> We are Andy, Claire, Megan, and Sarah, 4 sophomores at Rice University 
-        passionate about food and supporting small businesses. Yeet Yeet Slogan Here! </h4>
+        passionate about food and supporting small businesses, especially through the pandemic. </h4>
+    
     <Footer />
   </div>
 </template>
