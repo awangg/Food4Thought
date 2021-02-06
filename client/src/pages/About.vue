@@ -4,7 +4,7 @@
             <div class="col">
                 <h1 class="about-title">our algorithm</h1>
                 <h2 class="subtitle my-5">Latent Factor Collaborative Filtering</h2>
-                <h4 class="intro my-5"> We chose built a latent factor collaborative filtering (LFCF) 
+                <h4 class="intro my-5"> We chose to build a latent factor collaborative filtering (LFCF) 
                     recommendation system trained on user, business, and review datasets from Google Maps
                     (Google Local Reviews) to accurately find the most relevant restaurants to a user's
                     request. LFCF utilizes the behavior of other users to recommend items or services, which
@@ -16,9 +16,9 @@
                     to identify the most important remaining words. </h4>
                     <img src="https://miro.medium.com/max/2400/1*il58xdOYQcy4pHvtiJJpsQ.png" class="img-fluid" />
                 <h4 class="intro my-5"> We then inserted these vectors with their
-                    corresponding user and business IDs into a two matrices and multiplied them together to
+                    corresponding user and business IDs into two matrices and multiplied them together to
                     approximate the most likely rating that the user would give to the restaurant. Finally, 
-                    we use gradient descent calculate and minimize the error in our predictions. </h4> 
+                    we used gradient descent to calculate and minimize the error in our predictions. </h4> 
                     <img src="~@/assets/error.png" alt="andy" class="img-fluid" />
                 <h4 class="intro my-5"> The recommendation system would return five restaurants, given by their
                     name, estimated rating, and Google Places ID. We simply plugged the ID into the Google Places
