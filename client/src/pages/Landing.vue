@@ -24,6 +24,7 @@
       <p src = "slogan" class = "slogan">supporting local in the pandemic</p>
   </div>
 
+  <a href="/onboarding" class="arrow"></a>
   </div>
   </div>
 </template>
@@ -64,8 +65,8 @@ body {
 }
 
 img {
-    height: 200px;
-    width: 200px;
+    height: 300px;
+    width: 300px;
 }
 
 #home {
@@ -110,5 +111,36 @@ img {
   color: #3C3C3C;
 }
 
+.arrow {
+	border: solid black;
+	border-color: #3C3C3C;
+	border-width: 0 3px 3px 0;
+	display: inline-block;
+	padding: 10px;
+	transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  transition: 0.3s;
+  animation: bounce 3s infinite;
+  margin: 20px;
+}
+
+.arrow:hover {
+	-webkit-animation-play-state: paused;
+	opacity: 60%;
+	transform: scale(1.25) rotate(45deg);
+}
+
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0) rotate(45deg);
+  }
+  40% {
+    transform: translateY(-30px) rotate(45deg);
+  }
+  60% {
+    transform: translateY(-15px) rotate(45deg);
+  }
+}
 
 </style>

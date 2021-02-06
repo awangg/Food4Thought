@@ -10,7 +10,7 @@
             <router-link class="nav-link" to="/"> Home </router-link>
           </b-nav-item>
           <b-nav-item class="nav-item" right>
-            <router-link class="nav-link" to="/onboarding"> Let's Eat! </router-link>
+            <a class="nav-link" href="/onboarding"> Let's Eat! </a>
           </b-nav-item>
           <b-nav-item class="nav-item" right>
             <router-link class="nav-link" to="/about"> About </router-link>
