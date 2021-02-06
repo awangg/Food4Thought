@@ -66,7 +66,7 @@ def processPlaces(n):
   for l in g:
     place = ast.literal_eval(str(eval(l)))
     if(place['address'] != None and place['name'] != None):
-      if isInHouston(place['address']) and notYuge(place['name']):
+      if isInHouston(place['address']):
         places.append(place['gPlusPlaceId'])
         obj = pd.json_normalize(place)
         if count == 0:
