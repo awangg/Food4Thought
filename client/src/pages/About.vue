@@ -4,7 +4,7 @@
             <div class="col">
                 <h1 class="about-title">our algorithm</h1>
                 <h2 class="subtitle my-5">Latent Factor Collaborative Filtering</h2>
-                <h4 class="intro my-5"> We chose built a latent factor collaborative filtering (LFCF) 
+                <h4 class="intro my-5"> We chose to build a latent factor collaborative filtering (LFCF) 
                     recommendation system trained on user, business, and review datasets from Google Maps
                     (Google Local Reviews) to accurately find the most relevant restaurants to a user's
                     request. LFCF utilizes the behavior of other users to recommend items or services, which
