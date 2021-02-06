@@ -113,7 +113,7 @@ img {
 
 .arrow {
 	border: solid black;
-	border-color: #575757;
+	border-color: #3C3C3C;
 	border-width: 0 3px 3px 0;
 	display: inline-block;
 	padding: 10px;
