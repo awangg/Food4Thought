@@ -1,4 +1,4 @@
 __pycache__/
-
+data/
 # Virtual Environment Files
-dev/
+venv/
