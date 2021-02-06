@@ -1,7 +1,7 @@
 <template>
   <div id="AboutUs">
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet">
-    <h1  class = "about-title">About Us</h1>    
+    <h1  class = "about-title">about us</h1>    
     <h4 class='intro'> We are Andy, Claire, Megan, and Sarah, 4 sophomores at Rice University 
         passionate about food and supporting small businesses, especially through the pandemic. </h4>
     <img src="~@/assets/andy.jpg" alt="face" class="face">
@@ -28,7 +28,6 @@ export default {
 body {
   direction: ltr;
   margin: 40px;
-  padding: 10;
   background-color:#ffffff;
   /* make it look decent enough #C8E7F5*/
   color: #000000;
@@ -38,13 +37,14 @@ body {
 }
 .about-title {
   font-family: 'Kumbh Sans', sans-serif;
-  font-size: 36px;
+  font-size: 80px;
+  color: #ffb6b9;
 }
 .intro {
-  font-family: 'Kumbh Sans', sans-serif;
-  font-size: 20px;
-  margin-left: 15px;
-  margin-right: 15px; 
+  font-size: 24px;
+  margin-left: 20px;
+  margin-right: 20px; 
+
 }
 .small_logo {
   width: 150px;
