@@ -125,6 +125,7 @@ export default {
     padding-left: 60%;
     padding-right: 10%;
     margin-top: -15%;
+
 }
 
 
