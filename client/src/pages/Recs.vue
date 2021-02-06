@@ -1,150 +1,100 @@
 <template>
-  <div id="landing">
-    <div id="container">
-      <el-col :span="11"><div class="grid-content">
-        <span>
-        <div class="title">
-          your recommendations
+  <div id="recs" class="d-flex align-items-center">
+      <div class="row">
+        <div id="map" class="col-md-6 col-sm-12">
         </div>
-        </span>
-      </div></el-col>
-    </div>
-  <div id="background">
-      
-      <div class = "grid-content2">
-      <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet">
-      <p src = "slogan" class = "slogan">here are your top local restaurant hits! </p>
+        <div class="col-md-6 col-sm-12" id="results">
+            <div class="row d-flex justify-content-center"
+                v-for="rec in recs"
+                :key="rec.name">
+                <div class="col-6">
+                    <b-card
+                      :title="rec.name"
+                      img-alt="image"
+                      img-top
+                      tag="article"
+                      style="max-width: 20rem;"
+                      class="mb-2"
+                    >
+                        <b-card-text>
+                          {{ rec.formatted_address }}
+                        </b-card-text>
+                        <b-button :href="rec.url" variant="primary" class="mr-3">See More</b-button>
+                        {{ rec.rating }}  <i class="fas fa-star star"></i>
+                    </b-card>
+                </div>
+            </div>
+        </div>
       </div>
   </div>
- 
- 
-  <div>
-  <b-card-group deck>
-    <b-card v-for="res in recs" :key="res.gPlusPlaceId" :title="res.name" class="r1" >
-      <img class = "icon" src="~@/assets/blue_icon.png">
-      <b-card-text>
-        This is a wider card with supporting text below as a natural lead-in to additional content.
-        This card has even longer content than the first to show that equal height action.
-      </b-card-text>
-      <template #footer>
-        <small class="text-muted">Address</small>
-      </template>
-    </b-card>
-  </b-card-group>
-</div>
-
-
-  </div>
-
 </template>
 
 <script scoped>
-
 export default {
   data() {
     return {
       recs: [],
-      key: 'AIzaSyAiFbxvrMV6zhM2rnJYLFu1lvkEyYHI8ZI'
+      map: null,
+      mapCenter: { lat: 30, lng: -95 }
     }
   },
   mounted() {
     this.recs = this.$route.params.results
+    this.recs.sort( function(a, b) {
+      let aRate = parseFloat(a.rating)
+      let bRate = parseFloat(b.rating)
+      return bRate - aRate
+    })
+    this.initMap()
+    this.initRecs()
+  },
+  methods: {
+    initMap() {
+        this.map = new window.google.maps.Map(document.getElementById('map'), {
+          center: this.mapCenter,
+          zoom: 10,
+          maxZoom: 20,
+          minZoom: 3,
+          streetViewControl: false,
+          mapTypeControl: false,
+          fullscreenControl: false,
+          zoomControl: false
+        })
+    },
+    initRecs() {
+      this.recs.forEach( (value) => {
+        let marker = new window.google.maps.Marker({
+          position: value.location,
+          map: this.map,
+          label: {
+            text: value.name,
+            color: '#000'
+          }
+        })
+        console.log(marker)
+      })
+    }
   }
 }
 </script>
 
 <style scoped>
-
-.icon {
-    width: 240px;
-    height: 200px;
+#recs {
+  height: 100vh;
 }
 
-.r1 {
-    font-size: 20px;
-    padding-right: 60%;
-    padding-left: 10%;
-    margin-top: -15%;
+#map {
+  width: 60vw;
+  height: 60vh;
+  border: 4px solid black;
 }
 
-.r2 {
-    font-size: 20px;
-    padding-left: 60%;
-    padding-right: 10%;
-    margin-top: -15%;
-
+#results {
+  overflow-y: scroll;
+  height: 60vh;
 }
 
-
-.title {
-  font-family: 'Kumbh Sans', sans-serif;
-  font-weight: bold;
-  font-size: 80px;
-  margin-top: 7%;
-  color: #ffb6b9;
+.star {
+  color: goldenrod;
 }
-.el-col {
-    border-radius: 4px;
-    position: relative; /* Declared position allows for location changes */
-    top: -5px; /* Moves the image 5px closer to the top of the page */
-}
-
-body {
-  direction: ltr;
-  margin: 0;
-  padding: 0;
-  /* make it look decent enough #C8E7F5*/
-  position: relative;
-  height: 100%; 
-}
-
-img {
-    height: 200px;
-    width: 200px;
-}
-
-#home {
-  font-family: 'Kumbh Sans', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #000000;
-  background-color:azure;
-}
-@media screen and (max-width: 399px) {
-  body {
-    overflow: visible;
-    overflow-x: hidden;
-  }
-}
-#item {
-  margin: 0;
-  padding: 0;
-}
-
-.button1{
-  color: black;
-  font-family: 'Kumbh Sans', sans-serif;
-  font-size: 20px;
-  text-align: left;
-}
-
-
-.button1:hover {
-   background-color: azure;
-   color: black;
-}
-.slogan {
-  font-family: 'Kumbh Sans', sans-serif;
-  font-weight: bold;
-  font-style: italic;
-  font-size: 30px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #3C3C3C;
-  padding-bottom: 16%;
-}
-
-
 </style>

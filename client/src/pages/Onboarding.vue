@@ -13,11 +13,12 @@
                     <input v-model="query" type="text" class="mt-3" />
                 </div>
             </div>
-            <div class="row mt-5">
+            <div class="row my-5">
                 <div class="col">
                     <button class="btn" v-on:click="this.sendReq">Order Up</button>
                 </div>
             </div>
+            <b-spinner v-if="waiting" variant="primary" label="Spinning"></b-spinner>
         </div>
     </div>
 </template>
@@ -30,11 +31,12 @@ import axios from 'axios';
 export default {
   methods: {
     sendReq() {
-      console.log('yeeti on my deeti')
+      this.waiting = true
       axios({
           method: 'post',
           url: `http://localhost:5000/recommendation?request=${this.query}`
       }).then( (response) => {
+          this.waiting = false
           this.$router.push({ name: 'recs', params: { results: response.data } })
       })
     }
@@ -49,7 +51,8 @@ export default {
         'food uwuwuwuwuwuwuwuwuwuwuwuwu?'
       ],
       message: "",
-      query: ""
+      query: "",
+      waiting: false
     }
   },
   mounted() {
