@@ -1,8 +1,7 @@
 <template>
   <div class="container mt-5">
     <b-navbar toggleable="lg" type="light" variant="faded" id="navbar">
-      <b-navbar-brand class="mt-3"><router-link class="nav-link" to="/"><h1>resu.<span style="color: #32afc7">me</span></h1></router-link></b-navbar-brand>
-
+     
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
       <b-collapse id="nav-collapse" is-nav>
@@ -22,6 +21,8 @@
     </b-navbar>
   </div>
 </template>
+
+
     
 
 <script>
@@ -53,15 +54,5 @@ b-navbar{
 .nav-link {
   text-decoration: none;
   color: #000;
-}
-.btn {
-  background: #a2dce7;
-  border-color: #a2dce7;
-  color: #2a2a2a;
-}
-.btn:hover {
-  background: #32afc7;
-  color: #2a2a2a;
-  border-color: #32afc7;
 }
 </style>

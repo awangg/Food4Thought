@@ -3,7 +3,6 @@
     <div id="container">
       <el-row :gutter="24">
         <el-col :span="1" align-items="left">
-          <a href='/About'><el-button round type="circle" src="button" class="button1">about us</el-button></a>
         </el-col>
         <el-col :span="23" z-index="4">
         </el-col>
@@ -30,11 +29,9 @@
 </template>
 
 <script scoped>
-
 export default {
   name: 'Landing',
   components: {
-
   },
 }
 </script>
