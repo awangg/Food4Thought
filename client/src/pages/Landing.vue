@@ -11,7 +11,7 @@
 
       <el-col :span="11"><div class="grid-content">
         <span>
-         <Logo/>
+         <img src="../assets/logo.png" class="img" alt="image">
         <div class="title">
           food4thought
         </div>
@@ -30,11 +30,11 @@
 </template>
 
 <script scoped>
-import Logo from "../assets/logo.png"
+
 export default {
   name: 'Landing',
   components: {
-    Logo
+
   },
 }
 </script>
@@ -61,6 +61,12 @@ body {
   position: relative;
   height: 100%; 
 }
+
+img {
+    height: 200px;
+    width: 200px;
+}
+
 #home {
   font-family: 'Kumbh Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
