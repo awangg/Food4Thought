@@ -43,7 +43,8 @@
 export default {
   data() {
     return {
-      recs: []
+      recs: [],
+      key: 'AIzaSyAiFbxvrMV6zhM2rnJYLFu1lvkEyYHI8ZI'
     }
   },
   mounted() {

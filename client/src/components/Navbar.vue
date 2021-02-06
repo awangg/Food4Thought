@@ -1,10 +1,9 @@
 <template>
 <div> 
-  <nav> 
-    <router-link class="nav-item" to="/recs">Recs</router-link>
-    <router-link class="nav-item" to="/about">About</router-link>
-    <router-link class="nav-item" to="/eat">Let's Eat!</router-link>
-    <router-link class="nav-item" to="/">Home</router-link>
+  <nav class="d-flex justify-content-center">
+		<router-link class="nav-item" to="/">Home</router-link>
+		<router-link class="nav-item" to="/about">About</router-link>
+    <router-link class="nav-item" to="/eat"><strong>Get Recommendations!</strong></router-link>
   </nav> 
 </div>
 </template>
