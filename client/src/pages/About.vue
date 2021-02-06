@@ -4,17 +4,18 @@
     <h1  class = "about-title">About Us</h1>    
     <h4 class='intro'> We are Andy, Claire, Megan, and Sarah, 4 sophomores at Rice University 
         passionate about food and supporting small businesses, especially through the pandemic. </h4>
-    
+    <Logo/>
     <Footer />
   </div>
 </template>
 
 <script scoped>
 //import Navbar from "./components/Navbar.vue"
+import Logo from "../assets/logo.png";
 export default {
   name: 'AboutUs',
   components: {
-    
+    Logo
   }
 }
 </script>
