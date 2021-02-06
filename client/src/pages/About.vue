@@ -4,6 +4,10 @@
     <h1  class = "about-title">About Us</h1>    
     <h4 class='intro'> We are Andy, Claire, Megan, and Sarah, 4 sophomores at Rice University 
         passionate about food and supporting small businesses, especially through the pandemic. </h4>
+    <img src="~@/assets/andy.jpg" alt="face" class="face">
+    <img src="~@/assets/claire_pic.png" alt="face" class="face">
+    <img src="~@/assets/megan_new.png" alt="face" class="face">
+    <img src="~@/assets/sarah.jpg" alt="face" class="face">
     <Logo/>
     <Footer />
   </div>

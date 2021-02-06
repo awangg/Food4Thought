@@ -40,11 +40,15 @@ export default {
 </script>
 
 <style scoped>
+
+.img {
+    margin-top: 15%;
+}
 .title {
   font-family: 'Kumbh Sans', sans-serif;
   font-weight: bold;
   font-size: 100px;
-  margin-top: 60%;
+  margin-top: 5%;
   color: #8cc4ff;
 }
 .el-col {
