@@ -7,3 +7,5 @@ sklearn
 wheel
 sklearn
 nltk
+requests
+flask_cors
