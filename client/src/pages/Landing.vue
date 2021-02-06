@@ -23,7 +23,7 @@
                 <p class="slogan">supporting local thru the pandemic</p>
             </div>
         </div>
-        <router-link to="onboarding" class="arrow mt-5"></router-link>
+        <router-link to="eat" class="arrow mt-5"></router-link>
     </div>
 </template>
 
