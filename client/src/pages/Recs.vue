@@ -21,24 +21,26 @@
   <div>
   <b-card-group deck>
     <b-card title="Title" img-alt="Image" 
-    class = "r1">
+    class = "r1" >
     <img class = "icon" src = "~@/assets/blue_icon.png">
       <b-card-text>
         This is a wider card with supporting text below as a natural lead-in to additional content.
-        This content is a little bit longer.
+        This card has even longer content than the first to show that equal height action.
       </b-card-text>
       <template #footer>
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted">Address</small>
       </template>
     </b-card>
 
-    <b-card title="Title" img-alt="Image"  class = "r2">
+    <b-card title="Title" img-alt="Image" 
+    class = "r2" >
     <img class = "icon" src = "~@/assets/light_pink_icon.png">
       <b-card-text>
-        This card has supporting text below as a natural lead-in to additional content.
+        This is a wider card with supporting text below as a natural lead-in to additional content.
+        This card has even longer content than the first to show that equal height action.
       </b-card-text>
       <template #footer>
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted">Address</small>
       </template>
     </b-card>
 
@@ -50,7 +52,7 @@
         This card has even longer content than the first to show that equal height action.
       </b-card-text>
       <template #footer>
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted">Address</small>
       </template>
     </b-card>
 
@@ -61,7 +63,7 @@
         This card has even longer content than the first to show that equal height action.
       </b-card-text>
       <template #footer>
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted">Address</small>
       </template>
     </b-card>
 
@@ -72,7 +74,7 @@
         This card has even longer content than the first to show that equal height action.
       </b-card-text>
       <template #footer>
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted">Addresso</small>
       </template>
     </b-card>
 
@@ -84,7 +86,7 @@
         This card has even longer content than the first to show that equal height action.
       </b-card-text>
       <template #footer>
-        <small class="text-muted">Last updated 3 mins ago</small>
+        <small class="text-muted">Address</small>
       </template>
     </b-card>
   </b-card-group>
