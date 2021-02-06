@@ -15,7 +15,7 @@
             </div>
             <div class="row mt-5">
                 <div class="col">
-                    <button class="btn btn-lg btn-primary" v-on:click="this.sendReq">Order Up</button>
+                    <button class="btn" v-on:click="this.sendReq">Order Up</button>
                 </div>
             </div>
         </div>
@@ -61,7 +61,7 @@ export default {
 <style scoped>
 .typewriter h1 {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .15em solid orange;
+  border-right: .15em solid #beebe9;
   font-family: monospace;
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
@@ -80,7 +80,7 @@ export default {
 /* The typewriter cursor effect */
 @keyframes blink-caret {
   from, to { border-color: transparent }
-  50% { border-color: orange; }
+  50% { border-color: #beebe9; }
 }
 
 input {
@@ -95,6 +95,15 @@ input {
 
 input:focus {
   outline: none;
-  box-shadow: -8px 10px 0px -7px #4EA6EA, 8px 10px 0px -7px #4EA6EA;
+  box-shadow: -8px 10px 0px -7px #f4dada, 8px 10px 0px -7px #f4dada;
+}
+
+button {
+    font-size: 20px;
+    background-color: #f4dada;
+}
+
+button:hover {
+    background-color: #beebe9;
 }
 </style>
