@@ -123,6 +123,7 @@ def recommend(request):
         # rect_dict['categories'] = df[df['gPlusPlaceId']==i]['categories'].iloc[0]
         rect_dict['rating'] = str(df[df['gPlusPlaceId']==i]['rating'].iloc[0])
         rect_dict['gPlusPlaceId'] = i
+        rect_dict['address'] = df_business[df_business['gPlusPlaceId']==i]['address'].iloc[0]
         dict_arr.append(rect_dict)
     
     return dict_arr
