@@ -93,7 +93,9 @@ export default {
   overflow-y: scroll;
   height: 60vh;
 }
-
+.row{
+  padding: 20px;
+}
 .button {
   background-color: #f4dada;
   border-color: #f4dada;
@@ -101,6 +103,12 @@ export default {
 }
 
 .button:hover {
+    background-color: #ffb6b9;
+    border-color: #ffb6b9;
+    color: #3C3C3C;
+}
+
+.button:focus {
     background-color: #ffb6b9;
     border-color: #ffb6b9;
     color: #3C3C3C;
