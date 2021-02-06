@@ -19,7 +19,7 @@
                         <b-card-text>
                           {{ rec.formatted_address }}
                         </b-card-text>
-                        <b-button :href="rec.url" variant="primary" class="mr-3">See More</b-button>
+                        <b-button :href="rec.url" target="_blank" variant="primary" class="button">Check it Out!</b-button>
                         {{ rec.rating }}  <i class="fas fa-star star"></i>
                     </b-card>
                 </div>
@@ -86,15 +86,35 @@ export default {
 #map {
   width: 60vw;
   height: 60vh;
-  border: 4px solid black;
+  border: 4px solid #beebe9;
 }
 
 #results {
   overflow-y: scroll;
   height: 60vh;
 }
+.row{
+  padding: 20px;
+}
+.button {
+  background-color: #f4dada;
+  border-color: #f4dada;
+  color: #3C3C3C;
+}
+
+.button:hover {
+    background-color: #ffb6b9;
+    border-color: #ffb6b9;
+    color: #3C3C3C;
+}
+
+.button:focus {
+    background-color: #ffb6b9;
+    border-color: #ffb6b9;
+    color: #3C3C3C;
+}
 
 .star {
-  color: goldenrod;
+  color: #f6eec7;
 }
 </style>
