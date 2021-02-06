@@ -26,13 +26,12 @@ print(df.head())
 
 #Select only stars and text
 #replaced 'business_id', 'user_id', 'stars', 'text' with 
-bus_data = df[['gPlusUserId', 'reviewerName', 'rating', 'reviewText']]
+bus_data = df[['gPlusPlaceId', 'reviewerName', 'rating', 'reviewText']]
 stop = []
 for word in stopwords.words('english'):
     s = [char for char in word if char not in string.punctuation]
     stop.append(''.join(s))
 
-print(stopwords.words('english'))
 
 def text_process(mess):
     """
@@ -52,5 +51,55 @@ def text_process(mess):
         # Now just remove any stopwords
         return " ".join([word for word in nopunc.split() if word.lower() not in stop])
 
+
 bus_data['reviewText'] = bus_data['reviewText'].apply(text_process)
 
+userid_df = bus_data[['reviewerName','reviewText']]
+business_df = bus_data[['gPlusPlaceId', 'reviewText']]
+
+from sklearn.feature_extraction.text import TfidfVectorizer
+#userid vectorizer
+userid_vectorizer = TfidfVectorizer(tokenizer = WordPunctTokenizer().tokenize, max_features=5000)
+userid_vectors = userid_vectorizer.fit_transform(userid_df['reviewText'])
+#Business id vectorizer
+businessid_vectorizer = TfidfVectorizer(tokenizer = WordPunctTokenizer().tokenize, max_features=5000)
+businessid_vectors = businessid_vectorizer.fit_transform(business_df['reviewText'])
+
+userid_rating_matrix = pd.pivot_table(bus_data, values='rating', index=['reviewerName'], columns=['gPlusPlaceId'])
+
+def matrix_factorization(R, P, Q, steps=25, gamma=0.001,lamda=0.02):
+    for step in range(steps):
+        for i in R.index:
+            for j in R.columns:
+                if R.loc[i,j]>0:
+                    eij=R.loc[i,j]-np.dot(P.loc[i],Q.loc[j])
+                    P.loc[i]=P.loc[i]+gamma*(eij*Q.loc[j]-lamda*P.loc[i])
+                    Q.loc[j]=Q.loc[j]+gamma*(eij*P.loc[i]-lamda*Q.loc[j])
+        e=0
+        for i in R.index:
+            for j in R.columns:
+                if R.loc[i,j]>0:
+                    e= e + pow(R.loc[i,j]-np.dot(P.loc[i],Q.loc[j]),2)+lamda*(pow(np.linalg.norm(P.loc[i]),2)+pow(np.linalg.norm(Q.loc[j]),2))
+        if e<0.001:
+            break
+        
+    return P,Q
+
+P = pd.DataFrame(userid_vectors.toarray(), index=userid_df.index, columns=userid_vectorizer.get_feature_names())
+Q = pd.DataFrame(businessid_vectors.toarray(), index=business_df.index, columns=businessid_vectorizer.get_feature_names())
+P, Q = matrix_factorization(userid_rating_matrix, P, Q, steps=25, gamma=0.001,lamda=0.02)
+
+# words = "i want to have dinner with beautiful views"
+# test_df= pd.DataFrame([words], columns=['reviewText'])
+# test_df['reviewText'] = test_df['reviewText'].apply(text_process)
+# test_vectors = userid_vectorizer.transform(test_df['reviewText'])
+# test_v_df = pd.DataFrame(test_vectors.toarray(), index=test_df.index, columns=userid_vectorizer.get_feature_names())
+
+# predictItemRating=pd.DataFrame(np.dot(test_v_df.loc[0],Q.T),index=Q.index,columns=['Rating'])
+# topRecommendations=pd.DataFrame.sort_values(predictItemRating,['Rating'],ascending=[0])[:7]
+
+# for i in topRecommendations.index:
+#     print(df_business[df_business['gPlusPlaceId']==i]['name'].iloc[0])
+#     #print(df_business[df_business['GPlusPlaceId']==i]['categories'].iloc[0])
+#     print(str(df[df['gPlusPlaceId']==i]['rating']))
+#     print('')
