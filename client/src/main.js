@@ -8,6 +8,9 @@ Vue.config.productionTip = false
 Vue.use(router);
 Vue.use(BootstrapVue)
 
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+
 new Vue({
   router,
   render: h => h(App),

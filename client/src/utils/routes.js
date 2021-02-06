@@ -17,7 +17,7 @@ const routes = [
     component: Landing
   },
   {
-    path: '/onboarding',
+    path: '/eat',
     name: 'onboarding',
     component: Onboarding
   },

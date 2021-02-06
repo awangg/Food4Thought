@@ -1,32 +1,30 @@
 <template>
-  <div id="landing">
-    <div id="container">
-      <el-row :gutter="24">
-        <el-col :span="1" align-items="left">
-        </el-col>
-        <el-col :span="23" z-index="4">
-        </el-col>
-      </el-row>
-
-      <el-col :span="11"><div class="grid-content">
-        <span>
-         <img src="../assets/logo.png" class="img" alt="image">
-        <div class="title">
-          food4thought
+    <div id="landing">
+        <div id="container">
+            <el-row :gutter="24">
+                <el-col :span="1" align-items="left">
+                </el-col>
+                <el-col :span="23" z-index="4">
+                </el-col>
+            </el-row>
+            <el-col :span="11">
+                <div class="grid-content">
+                    <span>
+                        <img src="../assets/logo.png" class="img" alt="image">
+                        <div class="title">
+                            food4thought
+                        </div>
+                    </span>
+                </div>
+            </el-col>
         </div>
-        </span>
-      </div></el-col>
+        <div id="row mt-5 h-100">
+            <div class="col">
+                <p class="slogan">supporting local thru the pandemic</p>
+            </div>
+        </div>
+        <router-link to="onboarding" class="arrow mt-5"></router-link>
     </div>
-  <div id="background">
-      
-      <div class = "grid-content2">
-      <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet">
-      <p src = "slogan" class = "slogan">supporting local in the pandemic</p>
-  </div>
-
-  <a href="/onboarding" class="arrow"></a>
-  </div>
-  </div>
 </template>
 
 <script scoped>
@@ -38,7 +36,6 @@ export default {
 </script>
 
 <style scoped>
-
 .img {
     margin-top: 18%;
 }
@@ -103,7 +100,6 @@ img {
 .slogan {
   font-family: 'Kumbh Sans', sans-serif;
   font-weight: bold;
-  font-style: italic;
   font-size: 30px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -114,7 +110,7 @@ img {
 .arrow {
 	border: solid black;
 	border-color: #ffb6b9;
-	border-width: 0 3px 3px 0;
+	border-width: 5px 5px 0px 0;
 	display: inline-block;
 	padding: 10px;
 	transform: rotate(45deg);
@@ -133,13 +129,13 @@ img {
 
 @keyframes bounce {
   0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0) rotate(45deg);
+    transform: translateX(15px) rotate(45deg);
   }
   40% {
-    transform: translateY(-30px) rotate(45deg);
+    transform: translateX(-30px) rotate(45deg);
   }
   60% {
-    transform: translateY(-15px) rotate(45deg);
+    transform: translateX(-15px) rotate(45deg);
   }
 }
 

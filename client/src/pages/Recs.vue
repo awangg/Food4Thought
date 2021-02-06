@@ -20,67 +20,8 @@
  
   <div>
   <b-card-group deck>
-    <b-card title="Title" img-alt="Image" 
-    class = "r1" >
-    <img class = "icon" src = "~@/assets/blue_icon.png">
-      <b-card-text>
-        This is a wider card with supporting text below as a natural lead-in to additional content.
-        This card has even longer content than the first to show that equal height action.
-      </b-card-text>
-      <template #footer>
-        <small class="text-muted">Address</small>
-      </template>
-    </b-card>
-
-    <b-card title="Title" img-alt="Image" 
-    class = "r2" >
-    <img class = "icon" src = "~@/assets/light_pink_icon.png">
-      <b-card-text>
-        This is a wider card with supporting text below as a natural lead-in to additional content.
-        This card has even longer content than the first to show that equal height action.
-      </b-card-text>
-      <template #footer>
-        <small class="text-muted">Address</small>
-      </template>
-    </b-card>
-
-    <b-card title="Title" img-alt="Image" 
-    class = "r1" >
-    <img class = "icon" src = "~@/assets/dark_pink_icon.png">
-      <b-card-text>
-        This is a wider card with supporting text below as a natural lead-in to additional content.
-        This card has even longer content than the first to show that equal height action.
-      </b-card-text>
-      <template #footer>
-        <small class="text-muted">Address</small>
-      </template>
-    </b-card>
-
-    <b-card title="Title" img-alt="Image"  class = "r2"  >
-    <img class = "icon" src = "~@/assets/yellow_icon.png">
-      <b-card-text>
-        This is a wider card with supporting text below as a natural lead-in to additional content.
-        This card has even longer content than the first to show that equal height action.
-      </b-card-text>
-      <template #footer>
-        <small class="text-muted">Address</small>
-      </template>
-    </b-card>
-
-    <b-card title="Title" img-alt="Image" class = "r1" >
-        <img class = "icon" src = "~@/assets/light_pink_icon.png">
-      <b-card-text>
-        This is a wider card with supporting text below as a natural lead-in to additional content.
-        This card has even longer content than the first to show that equal height action.
-      </b-card-text>
-      <template #footer>
-        <small class="text-muted">Addresso</small>
-      </template>
-    </b-card>
-
-    <b-card title="Title" img-alt="Image" img-top 
-    class = "r2" >
-    <img class = "icon" src = "~@/assets/blue_icon.png">
+    <b-card v-for="res in recs" :key="res.gPlusPlaceId" :title="res.name" class="r1" >
+      <img class = "icon" src="~@/assets/blue_icon.png">
       <b-card-text>
         This is a wider card with supporting text below as a natural lead-in to additional content.
         This card has even longer content than the first to show that equal height action.
@@ -100,9 +41,14 @@
 <script scoped>
 
 export default {
-  name: 'Landing',
-  components: {
+  data() {
+    return {
+      recs: []
+    }
   },
+  mounted() {
+    this.recs = this.$route.params.results
+  }
 }
 </script>
 

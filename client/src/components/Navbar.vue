@@ -3,7 +3,7 @@
   <nav> 
     <router-link class="nav-item" to="/recs">Recs</router-link>
     <router-link class="nav-item" to="/about">About</router-link>
-    <router-link class="nav-item" to="/onboarding">Let's Eat!</router-link>
+    <router-link class="nav-item" to="/eat">Let's Eat!</router-link>
     <router-link class="nav-item" to="/">Home</router-link>
   </nav> 
 </div>

@@ -1,185 +1,100 @@
 <template>
-    <form class="mt-5">
-        <input id="input-1" v-model="type" type="text" placeholder="Mediterranean, Vegetarian, or Fast Food" required autofocus />
-        <label for="input-1">
-            <span class="label-text">Type of Food</span>
-            <span class="nav-dot"></span>
-        </label>
-        <input id="input-2" v-model="qualities" type="text" placeholder="Beautiful View, Romantic" required />
-        <label for="input-2">
-            <span class="label-text">Description</span>
-            <span class="nav-dot"></span>
-        </label>
-        <input id="input-3" v-model="city" type="text" placeholder="Houston" required />
-        <label for="input-3">
-            <span class="label-text">City</span>
-            <span class="nav-dot"></span>
-        </label>
-        <input id="input-4" v-model="state" type="text" placeholder="Texas" required />
-        <label for="input-4">
-            <span class="label-text">State</span>
-            <span class="nav-dot"></span>
-        </label>
-        <input id="input-5" type="button" value="Press To Finish" />
-        <label for="input-5">
-            <span class="label-text">All Set!</span>
-            <span class="nav-dot"></span>
-        </label>
-        <p class="tip">Press Tab</p>
-    </form>
+    <div id="eat" class="d-flex align-items-center" style="height: 90vh;">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col">
+                    <div class="typewriter">
+                        <h1> {{ this.message }} </h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <input v-model="query" type="text" class="mt-3" />
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col">
+                    <button class="btn btn-lg btn-primary" v-on:click="this.sendReq">Order Up</button>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>
 
 
 
 <script>
+import axios from 'axios';
+
 export default {
   methods: {
-    
+    sendReq() {
+      console.log('yeeti on my deeti')
+      axios({
+          method: 'post',
+          url: `http://localhost:5000/recommendation?request=${this.query}`
+      }).then( (response) => {
+          this.$router.push({ name: 'recs', params: { results: response.data } })
+      })
+    }
+  },
+  data() {
+    return {
+      messages: [
+        'what are we feeling today?',
+        'what would you like today?',
+        'is this the krusty krab? no this is patrick.',
+        'what are you in the mood for?',
+        'food uwuwuwuwuwuwuwuwuwuwuwuwu?'
+      ],
+      message: "",
+      query: ""
+    }
+  },
+  mounted() {
+    this.message = this.messages[Math.floor(Math.random()*5)]
   }
 }
 </script>
 
 <style scoped>
+.typewriter h1 {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .15em solid orange;
+  font-family: monospace;
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: .15em; /* Adjust as needed */
+  animation: 
+    typing 2s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
 
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
 
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
 
 input {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -300%);
-    display: block;
-    width: 70vw;
-    opacity: 0;
-    pointer-events: none;
-    transition: all 0.5s cubic-bezier(0.4, 0.25, 0.8, 0.3);
-}
-input {
-    padding: 0.25rem 0;
-    border: 0;
-    border-bottom: 1px solid #beebe9;
-    outline: 0;
-    background: transparent;
-    color: #2a2a2a;
-    font-size: 3rem;
-    font-family: Avenir, Helvetica, Arial, sans-serif;
-    line-height: 4rem;
-    letter-spacing: 0.125rem;
-    transition: all 0.5s cubic-bezier(0.4, 0.25, 0.8, 0.3);
-}
-input::selection {
-    background: #beebe9;
+  border: 0;
+  font-family: 'Kumbh Sans', sans-serif;
+  font-size: 2rem;
+  box-shadow: -8px 10px 0px -7px #ebebeb, 8px 10px 0px -7px #ebebeb;
+  -webkit-transition: box-shadow 0.3s;
+  transition: box-shadow 0.3s;
+  padding-left: .5rem;
 }
 
 input:focus {
-    opacity: 1;
-    transform: translate(-50%, -100%);
-    pointer-events: auto;
-    transition: all 0.4s cubic-bezier(0.1, 0.45, 0.1, 0.85) 0.5s;
-    z-index: 10;
+  outline: none;
+  box-shadow: -8px 10px 0px -7px #4EA6EA, 8px 10px 0px -7px #4EA6EA;
 }
-input:focus ~ input {
-    transform: translate(-50%, 500%);
-    transition: all 0.5s ease-in;
-}
-input:focus ~ label .label-text {
-    transform: translate(-50%, 300%);
-    transition: all 0.5s ease-in;
-}
-input:focus ~ .tip {
-    opacity: 1;
-}
-
-input:focus + label .label-text {
-    opacity: 1;
-    transform: translate(-50%, -100%);
-    transition: all 0.3s cubic-bezier(0.1, 0.45, 0.1, 0.85) 0.4s;
-}
-input:focus + label .nav-dot:before {
-    background: #ffb6b9;
-    box-shadow: 0 0 0 0.15rem #beebe9, 0 0 0.05rem 0.26rem #beebe9;
-}
-.tip {
-    position: fixed;
-    top: 57%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 70%;
-    opacity: 0;
-    color: #2a2a2a;
-    font-size: 0.875rem;
-    font-weight: 300;
-    letter-spacing: 0.125rem;
-    text-transform: uppercase;
-    text-align: right;
-    transition: opacity 0.25s 0.5s;
-}
-
-.label-text {
-    position: fixed;
-    top: calc(50% - 4rem);
-    left: 50%;
-    transform: translate(-50%, -300%);
-    width: 70vw;
-    padding: 3.125rem 0 1.5rem;
-    text-transform: uppercase;
-    color: #2a2a2a;
-    opacity: 0;
-    font-size: 1.125rem;
-    font-weight: 300;
-    letter-spacing: 0.125rem;
-    pointer-events: none;
-    transition: all 0.4s cubic-bezier(0.4, 0.25, 0.8, 0.3) 0.05s;
-}
-.nav-dot {
-    cursor: pointer;
-    position: fixed;
-    padding: 0.625rem 1.25rem 0.625rem 0.625rem;
-    top: 52%;
-    right: 1.25rem;
-}
-.nav-dot:before {
-    content: '';
-    display: inline-block;
-    border-radius: 50%;
-    width: 0.375rem;
-    height: 0.375rem;
-    margin-right: 0.625rem;
-    position: fixed;
-    background-color: #ffb6b9;
-    border: 0;
-    transition: all 0.25s;
-}
-.nav-dot:hover:before {
-    width: 0.625rem;
-    height: 0.625rem;
-    margin-top: -0.125rem;
-    margin-left: -0.125rem;
-    background-color: #beebe9;
-}
-label[for="input-1"] .nav-dot {
-    margin-top: -125px;
-}
-label[for="input-2"] .nav-dot {
-    margin-top: -100px;
-}
-label[for="input-3"] .nav-dot {
-    margin-top: -75px;
-}
-label[for="input-4"] .nav-dot {
-    margin-top: -50px;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-form {
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-}
- 
 </style>
