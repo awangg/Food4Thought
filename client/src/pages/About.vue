@@ -1,14 +1,7 @@
 <template>
   <div id="AboutUs">
     <link href="https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap" rel="stylesheet">
-    <h1  class = "about-title">About Us</h1>
-    <a href='/'>
-    <img src="~@/assets/logo_final.png" alt="small_logo" class="small_logo" ></a>
-    <img src="~@/assets/andy.jpg" alt="face" class="face">
-    <img src="~@/assets/claire_pic.png" alt="face" class="face">
-    <img src="~@/assets/megan_new.png" alt="face" class="face">
-    <img src="~@/assets/Thomas_Yeum_copy.jpg" alt="face" class="face">
-    
+    <h1  class = "about-title">About Us</h1>    
     <h4 class='intro'> We are Andy, Claire, Megan, and Sarah, 4 sophomores at Rice University 
         passionate about food and supporting small businesses. Yeet Yeet Slogan Here! </h4>
     <Footer />
@@ -16,11 +9,11 @@
 </template>
 
 <script scoped>
-import Navbar from "./components/Navbar.vue"
+//import Navbar from "./components/Navbar.vue"
 export default {
   name: 'AboutUs',
   components: {
-    Footer
+    
   }
 }
 </script>

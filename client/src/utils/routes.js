@@ -8,7 +8,7 @@ import About from '../pages/About.vue';
 
 
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
