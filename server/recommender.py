@@ -20,7 +20,6 @@ nltk.download('stopwords')
 
 
 
-
 df = pd.read_csv('data/out.csv')
 df_business = pd.read_csv('data/places.csv')
 print(df.head())
@@ -33,6 +32,7 @@ for word in stopwords.words('english'):
     s = [char for char in word if char not in string.punctuation]
     stop.append(''.join(s))
 
+print(stopwords.words('english'))
 
 def text_process(mess):
     """
@@ -49,6 +49,6 @@ def text_process(mess):
     
     # Now just remove any stopwords
     return " ".join([word for word in nopunc.split() if word.lower() not in stop])
-
-
+    
+bus_data['reviewText'] = bus_data['reviewText'].apply(text_process)
 
