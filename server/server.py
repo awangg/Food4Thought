@@ -31,7 +31,6 @@ def recommend():
     }
     r2 = r = requests.get(url="https://maps.googleapis.com/maps/api/place/details/json", params=params2)
     data2 = r2.json()
-    print(data2)
 
     formatted_result = {
       'name': result['name'],
