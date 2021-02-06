@@ -12,6 +12,34 @@ left = -124.7844079 # west long
 right = -66.9513812 # east long
 bottom =  24.7433195 # south lat
 
+big_business = [
+  'McDonald',
+  'Burger King',
+  'Five Guys',
+  'Chipotle',
+  'Jack In The Box',
+  'Panera',
+  'Domino',
+  'Pizza Hut',
+  'Olive Garden',
+  'Sonic',
+  'Wendy',
+  'Taco Bell',
+  'Shake Shack',
+  'Arby',
+  'Cheesecake Factory',
+  'Whataburger',
+  'Chili\'s',
+  'IHOP',
+  'Subway',
+  'Little Caesar\'s',
+  'Chick Fil A',
+  'Smashburger',
+  'Wingstop',
+  'Starbucks',
+  'Dunkin'
+]
+
 def isRestaurant(categories):
   for category in categories:
     if('Restaurant' in category):
@@ -24,6 +52,12 @@ def isInHouston(location):
       return True
   return False
 
+def notYuge(name):
+  for loc in big_business:
+    if loc in name:
+      return False
+  return True
+
 def processPlaces(n):
   count = 0
   g = gzip.open('data/places.clean.json.gz', 'r')
@@ -31,8 +65,8 @@ def processPlaces(n):
 
   for l in g:
     place = ast.literal_eval(str(eval(l)))
-    if(place['address'] != None):
-      if isInHouston(place['address']):
+    if(place['address'] != None and place['name'] != None):
+      if isInHouston(place['address']) and notYuge(place['name']):
         places.append(place['gPlusPlaceId'])
         obj = pd.json_normalize(place)
         if count == 0:
@@ -66,14 +100,13 @@ def processUsers(n):
 def processReviews(n):
   count = 0
   g = gzip.open('data/reviews.clean.json.gz', 'r')
-  places = processPlaces(5000)
+  places = processPlaces(6000)
   reviews = []
 
   for l in g:
     review = ast.literal_eval(str(eval(l)))
     if(review['gPlusPlaceId'] != None and review['categories'] != None and str(review['reviewText']) != 'None'):
       if((review['gPlusPlaceId'] in places) and isRestaurant(review['categories'])):
-        print(str(review['reviewText']))
         obj = pd.json_normalize(review)
         if count == 0:
           obj.to_csv('data/out.csv', mode='a', index=False)
@@ -86,4 +119,4 @@ def processReviews(n):
       break
   print(reviews)
 
-processReviews(1000)
+processReviews(2000)
