@@ -43,7 +43,7 @@ export default {
   font-family: 'Kumbh Sans', sans-serif;
   font-weight: bold;
   font-size: 100px;
-  margin-top: 5%;
+  margin-top: 3%;
   color: #ffb6b9;
 }
 .el-col {
@@ -105,6 +105,7 @@ img {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #3C3C3C;
+  margin-bottom: 1%;
 }
 
 .arrow {
@@ -118,6 +119,7 @@ img {
   transition: 0.3s;
   animation: bounce 3s infinite;
   margin: 20px;
+  
 }
 
 .arrow:hover {
