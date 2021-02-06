@@ -28,7 +28,6 @@ export default {
 body {
   direction: ltr;
   margin: 40px;
-  padding: 10;
   background-color:#ffffff;
   /* make it look decent enough #C8E7F5*/
   color: #000000;
@@ -38,16 +37,14 @@ body {
 }
 .about-title {
   font-family: 'Kumbh Sans', sans-serif;
-  font-size: 60px;
+  font-size: 80px;
   color: #ffb6b9;
-  padding-top: 20px;
 }
 .intro {
-  
-  font-size: 20px;
+  font-size: 24px;
   margin-left: 20px;
   margin-right: 20px; 
-  padding: 20px;
+
 }
 .small_logo {
   width: 150px;
