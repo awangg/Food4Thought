@@ -15,6 +15,9 @@
           <b-nav-item class="nav-item" right>
             <router-link class="nav-link" to="/about"> About </router-link>
           </b-nav-item>
+          <b-nav-item class="nav-item" right>
+            <router-link class="nav-link" to="/recs"> Recs </router-link>
+          </b-nav-item>
 
         </b-navbar-nav>
       </b-collapse>

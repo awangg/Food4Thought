@@ -46,7 +46,7 @@ export default {
   font-weight: bold;
   font-size: 100px;
   margin-top: 5%;
-  color: #8cc4ff;
+  color: #ffb6b9;
 }
 .el-col {
     border-radius: 4px;
