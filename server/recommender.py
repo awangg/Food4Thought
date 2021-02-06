@@ -26,7 +26,7 @@ print(df.head())
 
 #Select only stars and text
 #replaced 'business_id', 'user_id', 'stars', 'text' with 
-bus_data = df[['gPlusPlaceId', 'reviewerName', 'rating', 'reviewText']]
+bus_data = df[['gPlusPlaceId', 'gPlusUserId', 'rating', 'reviewText']]
 stop = []
 for word in stopwords.words('english'):
     s = [char for char in word if char not in string.punctuation]
@@ -54,24 +54,35 @@ def text_process(mess):
 
 bus_data['reviewText'] = bus_data['reviewText'].apply(text_process)
 
-userid_df = bus_data[['reviewerName','reviewText']]
+userid_df = bus_data[['gPlusUserId','reviewText']]
 business_df = bus_data[['gPlusPlaceId', 'reviewText']]
 
+print("aljreghakjerghaeor;hgao;erhgaeruhg;auerg")
+print(userid_df.head())
+print(business_df.head())
+print("alirhgauerhgaoerhgoauerhgouahergh")
 from sklearn.feature_extraction.text import TfidfVectorizer
 #userid vectorizer
-userid_vectorizer = TfidfVectorizer(tokenizer = WordPunctTokenizer().tokenize, max_features=5000)
+userid_vectorizer = TfidfVectorizer(tokenizer = WordPunctTokenizer().tokenize, max_features=400)
 userid_vectors = userid_vectorizer.fit_transform(userid_df['reviewText'])
 #Business id vectorizer
-businessid_vectorizer = TfidfVectorizer(tokenizer = WordPunctTokenizer().tokenize, max_features=5000)
+businessid_vectorizer = TfidfVectorizer(tokenizer = WordPunctTokenizer().tokenize, max_features=400)
 businessid_vectors = businessid_vectorizer.fit_transform(business_df['reviewText'])
 
-userid_rating_matrix = pd.pivot_table(bus_data, values='rating', index=['reviewerName'], columns=['gPlusPlaceId'])
+userid_rating_matrix = pd.pivot_table(bus_data, values='rating', index=['gPlusUserId'], columns=['gPlusPlaceId'])
+print("============================\n")
+print(userid_rating_matrix.head())
+print("\n==============================")
 
 def matrix_factorization(R, P, Q, steps=25, gamma=0.001,lamda=0.02):
+    print(R)
     for step in range(steps):
         for i in R.index:
             for j in R.columns:
                 if R.loc[i,j]>0:
+                    print(i, j)
+                    print(P.loc[i])
+                    print(Q.loc[j])
                     eij=R.loc[i,j]-np.dot(P.loc[i],Q.loc[j])
                     P.loc[i]=P.loc[i]+gamma*(eij*Q.loc[j]-lamda*P.loc[i])
                     Q.loc[j]=Q.loc[j]+gamma*(eij*P.loc[i]-lamda*Q.loc[j])
@@ -85,8 +96,10 @@ def matrix_factorization(R, P, Q, steps=25, gamma=0.001,lamda=0.02):
         
     return P,Q
 
-P = pd.DataFrame(userid_vectors.toarray(), index=userid_df.index, columns=userid_vectorizer.get_feature_names())
-Q = pd.DataFrame(businessid_vectors.toarray(), index=business_df.index, columns=businessid_vectorizer.get_feature_names())
+P = pd.DataFrame(userid_vectors.toarray(), index=userid_df.gPlusUserId, columns=userid_vectorizer.get_feature_names())
+Q = pd.DataFrame(businessid_vectors.toarray(), index=business_df.gPlusPlaceId, columns=businessid_vectorizer.get_feature_names())
+print(P)
+print(Q.head())
 P, Q = matrix_factorization(userid_rating_matrix, P, Q, steps=25, gamma=0.001,lamda=0.02)
 
 # words = "i want to have dinner with beautiful views"
