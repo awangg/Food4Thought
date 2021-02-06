@@ -196,7 +196,7 @@ img {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #3C3C3C;
-  padding-bottom: 20%;
+  padding-bottom: 16%;
 }
 
 
