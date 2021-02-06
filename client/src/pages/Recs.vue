@@ -20,7 +20,9 @@
  
   <div>
   <b-card-group deck>
-    <b-card title="Title" img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top>
+    <b-card title="Title" img-alt="Image" 
+    class = "r1">
+    <img class = "icon" src = "~@/assets/blue_icon.png">
       <b-card-text>
         This is a wider card with supporting text below as a natural lead-in to additional content.
         This content is a little bit longer.
@@ -30,7 +32,8 @@
       </template>
     </b-card>
 
-    <b-card title="Title" img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top>
+    <b-card title="Title" img-alt="Image"  class = "r2">
+    <img class = "icon" src = "~@/assets/light_pink_icon.png">
       <b-card-text>
         This card has supporting text below as a natural lead-in to additional content.
       </b-card-text>
@@ -39,7 +42,43 @@
       </template>
     </b-card>
 
-    <b-card title="Title" img-src="https://picsum.photos/300/300/?image=41" img-alt="Image" img-top>
+    <b-card title="Title" img-alt="Image" 
+    class = "r1" >
+    <img class = "icon" src = "~@/assets/dark_pink_icon.png">
+      <b-card-text>
+        This is a wider card with supporting text below as a natural lead-in to additional content.
+        This card has even longer content than the first to show that equal height action.
+      </b-card-text>
+      <template #footer>
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </template>
+    </b-card>
+
+    <b-card title="Title" img-alt="Image"  class = "r2"  >
+    <img class = "icon" src = "~@/assets/yellow_icon.png">
+      <b-card-text>
+        This is a wider card with supporting text below as a natural lead-in to additional content.
+        This card has even longer content than the first to show that equal height action.
+      </b-card-text>
+      <template #footer>
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </template>
+    </b-card>
+
+    <b-card title="Title" img-alt="Image" class = "r1" >
+        <img class = "icon" src = "~@/assets/light_pink_icon.png">
+      <b-card-text>
+        This is a wider card with supporting text below as a natural lead-in to additional content.
+        This card has even longer content than the first to show that equal height action.
+      </b-card-text>
+      <template #footer>
+        <small class="text-muted">Last updated 3 mins ago</small>
+      </template>
+    </b-card>
+
+    <b-card title="Title" img-alt="Image" img-top 
+    class = "r2" >
+    <img class = "icon" src = "~@/assets/blue_icon.png">
       <b-card-text>
         This is a wider card with supporting text below as a natural lead-in to additional content.
         This card has even longer content than the first to show that equal height action.
@@ -57,6 +96,7 @@
 </template>
 
 <script scoped>
+
 export default {
   name: 'Landing',
   components: {
@@ -65,6 +105,25 @@ export default {
 </script>
 
 <style scoped>
+
+.icon {
+    width: 240px;
+    height: 200px;
+}
+
+.r1 {
+    font-size: 20px;
+    padding-right: 60%;
+    padding-left: 10%;
+    margin-top: -15%;
+}
+
+.r2 {
+    font-size: 20px;
+    padding-left: 60%;
+    padding-right: 10%;
+    margin-top: -15%;
+}
 
 
 .title {
@@ -134,6 +193,7 @@ img {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #3C3C3C;
+  padding-bottom: 20%;
 }
 
 
