@@ -74,45 +74,47 @@ print("============================\n")
 print(userid_rating_matrix.head())
 print("\n==============================")
 
-def matrix_factorization(R, P, Q, steps=25, gamma=0.001,lamda=0.02):
-    print(R)
-    for step in range(steps):
-        for i in R.index:
-            for j in R.columns:
-                if R.loc[i,j]>0:
-                    print(i, j)
-                    print(P.loc[i])
-                    print(Q.loc[j])
-                    eij=R.loc[i,j]-np.dot(P.loc[i],Q.loc[j])
-                    P.loc[i]=P.loc[i]+gamma*(eij*Q.loc[j]-lamda*P.loc[i])
-                    Q.loc[j]=Q.loc[j]+gamma*(eij*P.loc[i]-lamda*Q.loc[j])
-        e=0
-        for i in R.index:
-            for j in R.columns:
-                if R.loc[i,j]>0:
-                    e= e + pow(R.loc[i,j]-np.dot(P.loc[i],Q.loc[j]),2)+lamda*(pow(np.linalg.norm(P.loc[i]),2)+pow(np.linalg.norm(Q.loc[j]),2))
-        if e<0.001:
-            break
+# def matrix_factorization(R, P, Q, steps=25, gamma=0.001,lamda=0.02):
+#     print(R)
+#     for step in range(steps):
+#         for i in R.index:
+#             for j in R.columns:
+#                 if R.loc[i,j]>0:
+#                     print(i, j)
+#                     print(P.loc[i])
+#                     print(Q.loc[j])
+#                     print("HIHIHIHIHHIHIHI")
+#                     print(P.loc[i].transpose())
+#                     eij=R.loc[i,j]-np.dot(Q.loc[j],P.loc[i].transpose())
+#                     P.loc[i]=P.loc[i]+gamma*(eij*Q.loc[j]-lamda*P.loc[i])
+#                     Q.loc[j]=Q.loc[j]+gamma*(eij*P.loc[i]-lamda*Q.loc[j])
+#         e=0
+#         for i in R.index:
+#             for j in R.columns:
+#                 if R.loc[i,j]>0:
+#                     e= e + pow(R.loc[i,j]-np.dot(P.loc[i],Q.loc[j]),2)+lamda*(pow(np.linalg.norm(P.loc[i]),2)+pow(np.linalg.norm(Q.loc[j]),2))
+#         if e<0.001:
+#             break
         
-    return P,Q
+#     return P,Q
 
 P = pd.DataFrame(userid_vectors.toarray(), index=userid_df.gPlusUserId, columns=userid_vectorizer.get_feature_names())
 Q = pd.DataFrame(businessid_vectors.toarray(), index=business_df.gPlusPlaceId, columns=businessid_vectorizer.get_feature_names())
-print(P)
-print(Q.head())
-P, Q = matrix_factorization(userid_rating_matrix, P, Q, steps=25, gamma=0.001,lamda=0.02)
+# print(P)
+# print(Q.head())
+# P, Q = matrix_factorization(userid_rating_matrix, P, Q, steps=25, gamma=0.001,lamda=0.02)
 
-# words = "i want to have dinner with beautiful views"
-# test_df= pd.DataFrame([words], columns=['reviewText'])
-# test_df['reviewText'] = test_df['reviewText'].apply(text_process)
-# test_vectors = userid_vectorizer.transform(test_df['reviewText'])
-# test_v_df = pd.DataFrame(test_vectors.toarray(), index=test_df.index, columns=userid_vectorizer.get_feature_names())
+words = "comfort food"
+test_df= pd.DataFrame([words], columns=['reviewText'])
+test_df['reviewText'] = test_df['reviewText'].apply(text_process)
+test_vectors = userid_vectorizer.transform(test_df['reviewText'])
+test_v_df = pd.DataFrame(test_vectors.toarray(), index=test_df.index, columns=userid_vectorizer.get_feature_names())
 
-# predictItemRating=pd.DataFrame(np.dot(test_v_df.loc[0],Q.T),index=Q.index,columns=['Rating'])
-# topRecommendations=pd.DataFrame.sort_values(predictItemRating,['Rating'],ascending=[0])[:7]
+predictItemRating=pd.DataFrame(np.dot(test_v_df.loc[0],Q.T),index=Q.index,columns=['Rating'])
+topRecommendations=pd.DataFrame.sort_values(predictItemRating,['Rating'],ascending=[0])[:7]
 
-# for i in topRecommendations.index:
-#     print(df_business[df_business['gPlusPlaceId']==i]['name'].iloc[0])
-#     #print(df_business[df_business['GPlusPlaceId']==i]['categories'].iloc[0])
-#     print(str(df[df['gPlusPlaceId']==i]['rating']))
-#     print('')
+for i in topRecommendations.index:
+    print(df_business[df_business['gPlusPlaceId']==i]['name'].iloc[0])
+    print(df[df['gPlusPlaceId']==i]['categories'].iloc[0])
+    print(str(df[df['gPlusPlaceId']==i]['rating'].iloc[0]))
+    print('')
